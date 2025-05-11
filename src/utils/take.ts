@@ -1,4 +1,4 @@
-function* take<T>(n: number, iterable: Iterable<T>): Generator<T> {
+function* take<T>(n: bigint | number, iterable: Iterable<T>): Generator<T> {
   for (let i of iterable) {
     if (n <= 0) {
       return

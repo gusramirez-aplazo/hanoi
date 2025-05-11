@@ -2,7 +2,7 @@ import { take } from '../utils/take.js'
 
 function* hanoiBinarySolution(args: {
   numDisks: number
-  totalMoves: number
+  totalMoves: bigint
   sourceName?: string
   destName?: string
   auxName?: string
@@ -60,7 +60,7 @@ const solveWithTiming = async (args: {
 }) => {
   const { disks, isTruncated = true, origin, helper, destiny } = args
 
-  const totalMoves = Math.pow(2, disks) - 1
+  const totalMoves = 2n ** BigInt(disks) - 1n
 
   const start = performance.now()
   const solution = [

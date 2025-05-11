@@ -32,7 +32,10 @@ app.post('/', validateDisks(), async (c) => {
   )
 
   return c.json({
-    data: result,
+    data: {
+      ...result,
+      totalMoves: result.totalMoves.toString(),
+    },
     ok: true,
     error: null,
   })
