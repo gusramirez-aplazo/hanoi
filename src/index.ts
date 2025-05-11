@@ -10,10 +10,14 @@ const app = new Hono()
 
 app.use(
   '/api/v1/*',
-  cors({
-    origin: ['https://hanoi-puzzle.pages.dev/'],
-    allowMethods: ['POST', 'GET', 'OPTIONS'],
-  })
+  cors(
+    process.env.HONO_CORS_ORIGIN
+      ? {
+          origin: [process.env.HONO_CORS_ORIGIN],
+          allowMethods: ['POST', 'GET', 'OPTIONS'],
+        }
+      : undefined
+  )
 )
 app.use(secureHeaders())
 app.use(logger(customLogger))
